@@ -3,27 +3,30 @@ import morgan from "morgan";
 
 const app = express();
 
-app.use(morgan('dev'))
+app.use(morgan("dev"));
 
-app.set("views", './views');
-app.set("view engine", 'ejs');
+app.set("views", "./views");
+app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.send("Hello From Node.js!");
+  // res.send("Hello From Node.js!");
+  res.render("index", { message: "Hello From Node.js" });
 });
 
 app.get("/contact", (req, res) => {
-  res.send("The Contact Page");
+  // res.send("The Contact Page");
+  res.render("index", { message: "The Contact Page" });
 });
 
 app.get("/about", (req, res) => {
-  res.send("The About Page");
+  // res.send("The About Page");
+  res.render("index", { message: "The About Page" });
 });
 
-app.get('/*splat', (req, res) => {
-  res.status(404).send('Not Found');
+app.get("/*splat", (req, res) => {
+  // res.status(404).send("Not Found");
+  res.render("index", { message: "Not Found" });
 });
-
 
 const PORT = 3000;
 
